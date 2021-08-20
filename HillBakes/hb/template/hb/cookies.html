@@ -1,0 +1,25 @@
+{% extends 'hill_bakes/base.html' %}
+
+
+{% block title %}
+Cookies
+{% endblock %}
+
+{% block content %}
+<div class="home_main">
+    <h1>Hill Bakes</h1>
+</div>
+<div class="sub_main">
+    <h3><a href="{% url 'hill_bakes:home_page' %}">Home</a></h3>
+    <h3><a href="{% url 'hill_bakes:cakes' %}">Cakes</a></h3>
+    <h3><a href="{% url 'hill_bakes:cake_balls' %}">Cake Balls</a></h3>
+    <h3><a href="{% url 'hill_bakes:about' %}">About</a></h3>
+    <h3><a href="{% url 'hill_bakes:login' %}">Login</a></h3>
+    <h3><a href="{% url 'hill_bakes:signup' %}">Register</a></h3>
+    <h3><a href="{% url 'hill_bakes:shopping_cart' %}">Shopping Cart</a></h3>
+</div>
+
+</div>
+
+
+{% endblock %}

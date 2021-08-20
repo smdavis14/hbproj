@@ -1,0 +1,19 @@
+{% load static %}
+<header class="menu">
+  <div class="menu-wrap">
+    <i class="menu-logo"> 🍪  </i>
+    <a href="{% url 'hill_bakes:shopping_cart' %}""><img src="{% static 'hill_bakes/cart.png' %}" alt="cart"></a>
+    <input type="checkbox" id="checkbox">
+    <div class="navbar">
+      <ul>
+        <li><a href="{% url 'hill_bakes:home_page' %}">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Orders</a></li>
+        <li><a href="">Login</a></li>
+      </ul>
+    </div>
+    <label for="checkbox">
+      <i class="fa fa-bars menu-icon"></i>
+    </label>
+  </div>
+</header>
