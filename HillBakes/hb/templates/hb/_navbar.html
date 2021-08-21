@@ -1,0 +1,19 @@
+{% load static %}
+<header class="menu">
+  <div class="menu-wrap">
+    <i class="menu-logo"> 🍪  </i>
+    <img src="{% static 'hb/cart.png' %}" alt="cart"></a>
+    <input type="checkbox" id="checkbox">
+    <div class="navbar">
+      <ul>
+        <li><a href="{% url 'hb:home_page' %}">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Orders</a></li>
+        <li><a href="">Login</a></li>
+      </ul>
+    </div>
+    <label for="checkbox">
+      <i class="bi bi-list"></i>
+    </label>
+  </div>
+</header>

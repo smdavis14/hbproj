@@ -1,0 +1,34 @@
+{% extends 'hb/base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<div class="home_main">
+    <h1>Hill Bakes</h1>
+</div>
+<div class="sub_main">
+    <h5><a href="{% url 'hb:home_page' %}">Home</a></h5>
+    <h5><a href="{% url 'hb:cookies' %}">Cookies</a></h5>
+    <h5><a href="{% url 'hb:cakes' %}">Cake</a></h5>
+    <h5><a href="{% url 'hb:cake_balls' %}">Cake Balls</a></h5>
+    <h5><a href="{% url 'hb:about' %}">About</a></h5>
+    <h5><a href="{% url 'client:signup' %}">Signup</a></h5>
+    
+</div>
+
+<body>
+
+    <form action="{% url 'client:login_user' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <a href="{% url 'client:signup' %}">or signup</a>
+    </form>
+
+</body>
+
+
+{% endblock %}

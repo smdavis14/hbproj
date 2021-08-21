@@ -1,0 +1,25 @@
+{% extends 'hb/base.html' %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block content %}
+<div class="home_main">
+    <h1>Hill Bakes</h1>
+</div>
+<div class="sub_main">
+    <h5><a href="{% url 'hb:home_page' %}">Home</a></h5>
+    <h5><a href="{% url 'hb:cookies' %}">Cookies</a></h5>
+    <h5><a href="{% url 'hb:cakes' %}">Cakes</a></h5>
+    <h5><a href="{% url 'hb:cake_balls' %}">Cake Balls</a></h5>
+    <h5><a href="{% url 'client:login_user' %}">Login</a></h5>
+    <h5><a href="{% url 'client:signup' %}">Signup</a></h5>
+    
+</div>
+<div>
+    <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita voluptatem labore illo maxime nam incidunt vel illum nostrum hic perferendis rerum ea cumque, dicta distinctio delectus dolores provident! Architecto cum numquam sed ducimus consectetur autem quisquam at ipsam iure nemo.</h2>
+</div>
+
+
+{% endblock %}

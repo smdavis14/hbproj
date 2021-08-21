@@ -1,0 +1,36 @@
+{% extends 'hb/base.html' %}
+
+{% block title %}
+Cakes
+{% endblock %}
+
+{% block content %}
+<div class="home_main">
+    <h1>Hill Bakes</h1>
+</div>
+<div class="sub_main">
+    <h5><a href="{% url 'hb:home_page' %}">Home</a></h5>
+    <h5><a href="{% url 'hb:cookies' %}">Cookies</a></h5>
+    <h5><a href="{% url 'hb:cake_balls' %}">Cake Balls</a></h5>
+    <h5><a href="{% url 'hb:about' %}">About</a></h5>
+    <h5><a href="{% url 'client:login_user' %}">Login</a></h5>
+    <h5><a href="{% url 'client:signup' %}">Signup</a></h5>
+
+</div>
+<div class="cake">
+    <ul>
+    {% for icing in cake %}
+        <li>{{icing}}</li>
+            <p>  - Description: {{icing.description}}</p>
+            <ul>
+                {% for p in price %}
+                    <li>{{p}} - ${{p.price}}</li>
+                {% endfor %}
+                <br>
+            </ul>
+    {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}
