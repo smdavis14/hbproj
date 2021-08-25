@@ -1,5 +1,24 @@
 {
   "dependencies": {
+    "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0"
-  }
+  },
+  "name": "hillbakes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smdavis14/hbproj.git"
+  },
+  "author": "Stephen Davis",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/smdavis14/hbproj/issues"
+  },
+  "homepage": "https://github.com/smdavis14/hbproj#readme",
+  "description": ""
 }

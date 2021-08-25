@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hb',
     'client',
     'cart',
+    'creditcards',
 ]
 
 MIDDLEWARE = [
