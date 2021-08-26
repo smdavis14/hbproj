@@ -1,12 +1,13 @@
 from django.shortcuts import render, reverse
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 
 def signup(request):
     print('METHOD', request.method)
     if request.method == 'GET':
-        return render(request, 'client/signup.html')
+        return render(request, 'client/login.html')
     elif request.method == 'POST':
         # get data from form
         form = request.POST

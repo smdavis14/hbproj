@@ -5,32 +5,24 @@ Cake Balls
 {% endblock %}
 
 {% block content %}
-<div class="home_main">
-    <h1>Hill Bakes</h1>
-</div>
-<div class="sub_main">
-    <h5><a href="{% url 'hb:home_page' %}">Home</a></h5>
-    <h5><a href="{% url 'hb:cookies' %}">Cookies</a></h5>
-    <h5><a href="{% url 'hb:cakes' %}">Cakes</a></h5>
-    <h5><a href="{% url 'hb:about' %}">About</a></h5>
-    <h5><a href="{% url 'client:login_user' %}">Login</a></h5>
-    <h5><a href="{% url 'client:signup' %}">Signup</a></h5>
 
-</div>
-<div class="cake_balls">
-    <ul>
+
+<section class="container-lg shadow-lg bg-light">
+    <div>
     {% for ball in cake_ball %}
-        <li>{{ball}}</li>
-            <p> - Description: {{ball.description}}</p>
-            <ul>
-                {% for p in price %}
-                    <li>{{p}} - ${{p.price}}</li>
-                {% endfor %}
-                <br>
-            </ul>
+        <div class="m-3 p-3 shadow-lg bg-success text-white justify-items-start">
+            <h3 class="p-2">{{ball}}</h3>
+                <p> Description: {{ball.description}}</p>
+                <ul>
+                    {% for p in price %}
+                        <li>{{p}} - ${{p.price}}</li>
+                    {% endfor %}
+                    <br>
+                </ul>
+        </div>
     {% endfor %}
-    </ul>
-</div>
+    </div>
+</section>
 
 
 {% endblock %}

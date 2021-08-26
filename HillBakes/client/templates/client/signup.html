@@ -1,36 +1,34 @@
 {% extends 'hb/base.html' %}
 
 {% block title %}
-Register
+Sign-Up
 {% endblock %}
 
 {% block content %}
-<div class="home_main">
-  <h1>Hill Bakes</h1>
-</div>
-<div class="sub_main">
-  <h5><a href="{% url 'hb:home_page' %}">Home</a></h5>
-  <h5><a href="{% url 'hb:cookies' %}">Cookies</a></h5>
-  <h5><a href="{% url 'hb:cakes' %}">Cake</a></h5>
-  <h5><a href="{% url 'hb:cake_balls' %}">Cake Balls</a></h5>
-  <h5><a href="{% url 'hb:about' %}">About</a></h5>
-  <h5><a href="{% url 'client:login_user' %}">Login</a></h5>
-  {% comment %}<h5><a href="{% url 'cart:shopping_cart' %}">Shopping Cart</a></h5>{% endcomment %}
-</div>
 
-<body>
-
-  <form action="{% url 'client:signup' %}" method="POST">
+<section class="container-lg shadow-lg pb-3 bg-success">
+  <form class="row g-3" action="{% url 'client:signup' %}" method="POST">
     {% csrf_token %}
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="first_name" placeholder="First Name">
-    <input type="text" name="last_name" placeholder="Last Name">
-    <button type="submit">Sign-Up</button>
+    <div class="col-md-6">
+      <input type="text" name="username" placeholder="Username" required>
+    </div>
+    <div class="col-md-6">
+      <input type="password" name="password" placeholder="Password" required>
+    </div>
+    <div class="col-md-6">
+      <input type="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="first_name" placeholder="First Name">
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="last_name" placeholder="Last Name">
+    </div>
+    <div class="col-md-6">
+      <button type="submit">Sign-Up</button>
+    </div>
   </form>
-
-</body>
+</section>
 
 
 {% endblock %}

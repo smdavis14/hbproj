@@ -19,14 +19,20 @@
     
     {% include 'hb/_navbar.html' %}
     
-    <div class="container-lg" data-bs-target="product">
-        <div class="row my-5 align-items-start">
-            {% block content %}
-    
-            {% endblock %}
-
+    <div class="container-lg border mx-auto m-5 bg-light">
+        <div class="row justify-content-lg-center">
+            <div class="col">
+                <h1 class="display-1 text-center">Hill Bakes</h1>
+            </div>
         </div>
     </div>
+    <div class="container-lg mx-auto m-5 bg-light" data-bs-target="product"></div>
+            {% block content %}
+    
+            
+            {% endblock %}
+    
+ 
     
     {% include 'hb/_footer.html' %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
