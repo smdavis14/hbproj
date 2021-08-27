@@ -1,4 +1,5 @@
 {% extends 'hb/base.html' %}
+{% load static %}
 
 
 {% block title %}
@@ -13,6 +14,9 @@ Cookies
         <div class="m-3 p-3 shadow-lg bg-success text-white justify-items-start">
             <h3 class="p-2">{{chip}}</h3>
                 <p> Description: {{chip.description}}</p>
+                {% if chip.image %}
+                <img src="{{chip.image.url}}" alt="cookie" class="float-end">
+                {% endif %}
                 <ul>
                     {% for p in price %}
                         <li>{{p}} - ${{p.price}}</li>
@@ -20,8 +24,8 @@ Cookies
                     <br>
                 </ul>
         </div>
-    {% endfor %}
-    </div>
+        {% endfor %}
+        </div>
 </section>
 
 
