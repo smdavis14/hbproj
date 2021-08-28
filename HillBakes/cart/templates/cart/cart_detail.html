@@ -1,0 +1,40 @@
+{% extends 'hb/base.html' %}
+
+{% block title %}
+Shopping Cart
+{% endblock %}
+
+{% block content %}
+<div class="cart_main">
+    <h1>Shopping Cart</h1>
+</div>
+
+<div>
+    {% load cart_tag %}
+
+    <a href="{% url 'cart:cart_clear' %}">Clear Cart</a>
+    {% for key,product in request.session.cart.items %}
+    <a href="{% url 'cart:item_increment' product.product_id product.cost_id  %}">Increament</a>
+    <a href="{% url 'cart:item_decrement' product.product_id product.cost_id %}">Decrement</a>
+    {% endfor %}
+</div>
+
+<div class="cart">
+    <H1>Your cart</H1>
+ 
+</div>
+
+<div>
+
+    Total Length :: {{request.session.cart|length}}
+
+    Cart Detail:
+
+    {% for key,product in request.session.cart.items %}
+    {{product.name}} {{cost.price}} {{product.quantity}} Total {{ product.price|multiply:product.quantity }}
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}
