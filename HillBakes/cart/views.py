@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from hb.models import Product, Cost
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
+import requests
 
 # Create your views here.
 #@login_required(login_url="/users/login")
@@ -10,7 +11,10 @@ def cart_add(request, productID, costID):
     product = Product.objects.get(id=productID)
     cost = Cost.objects.get(id=costID)
     cart.add(product=product, cost=cost)
-    return redirect("hb:home_page")
+
+    url = request.GET
+    
+    return redirect(url["next"])
 
 
 #@login_required(login_url="/users/login")
@@ -27,7 +31,7 @@ def item_increment(request, productID, costID):
     product = Product.objects.get(id=productID)
     cost = Cost.objects.get(id=costID)
     cart.add(product=product, cost=cost)
-    return redirect("hb:home_page")
+    return redirect("cart:cart_detail")
 
 
 #@login_required(login_url="/users/login")
@@ -36,14 +40,14 @@ def item_decrement(request, productID, costID):
     product = Product.objects.get(id=productID)
     cost = Cost.objects.get(id=costID)
     cart.decrement(product=product)
-    return redirect("hb:home_page")
+    return redirect("cart:cart_detail")
 
 
 #@login_required(login_url="/users/login")
 def cart_clear(request):
     cart = Cart(request)
     cart.clear()
-    return redirect("hb:home_page")
+    return redirect("cart:cart_detail")
 
 
 #@login_required(login_url="/users/login")

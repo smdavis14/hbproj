@@ -30,6 +30,7 @@ class Cart(object):
                 'name': product.name,
                 'quantity': 1,
                 'price': str(cost.price),
+                'verbose_name': cost.name,
                 
             }
         else:
@@ -51,6 +52,7 @@ class Cart(object):
                     'name': product.name,
                     'quantity': 1,
                     'price': str(cost.price),
+                    'verbose_name': cost.name,
                 }
 
         self.save()

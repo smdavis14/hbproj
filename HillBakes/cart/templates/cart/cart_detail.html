@@ -5,36 +5,55 @@ Shopping Cart
 {% endblock %}
 
 {% block content %}
-<div class="cart_main">
-    <h1>Shopping Cart</h1>
-</div>
 
-<div>
-    {% load cart_tag %}
+<section class="container-lg shadow-lg bg-light">        
+    <div class="m-3 p-3 shadow-lg bg-success text-white">
 
-    <a href="{% url 'cart:cart_clear' %}">Clear Cart</a>
-    {% for key,product in request.session.cart.items %}
-    <a href="{% url 'cart:item_increment' product.product_id product.cost_id  %}">Increament</a>
-    <a href="{% url 'cart:item_decrement' product.product_id product.cost_id %}">Decrement</a>
-    {% endfor %}
-</div>
+        <div class="cart_main">
+            <h1>Shopping Cart</h1>
+        </div>
+    </div>
+</section>
 
-<div class="cart">
-    <H1>Your cart</H1>
- 
-</div>
+<section class="container-lg shadow-lg bg-light">        
+    <div class="m-3 p-3 shadow-lg bg-success text-white">
+        <div class="row">
 
-<div>
+            <div>
+                {% load cart_tag %}
 
-    Total Length :: {{request.session.cart|length}}
+                <a class="text-dark" href="{% url 'cart:cart_clear' %}">Clear Cart</a>
 
-    Cart Detail:
 
-    {% for key,product in request.session.cart.items %}
-    {{product.name}} {{cost.price}} {{product.quantity}} Total {{ product.price|multiply:product.quantity }}
+                <div class="cart">
+                    <H1>Your cart</H1>
+                
+                </div>
 
-    {% endfor %}
-</div>
+
+
+                <h4>Total Items: {{request.session.cart|length}}</h4>
+
+                <h4>Cart Detail:</h4>
+
+                {% for key,product in request.session.cart.items %}
+                <ul class="list-group">{{product.name}}
+                     <li class="list-group-item">Item and Cost/Item: {{product.verbose_name}} @ ${{product.price}} </li>
+                     <li class="list-group-item">Quantity: {{product.quantity}}</li>
+                     <li class="list-group-item">Total ${{ product.price|multiply:product.quantity }}</li>
+                    <a class="text-dark" href="{% url 'cart:item_increment' product.product_id product.cost_id  %}">Add Item</a>
+                    <a class="text-dark" href="{% url 'cart:item_decrement' product.product_id product.cost_id %}">Remove Item</a>
+                </ul>
+                <br>
+
+                {% endfor %}
+                
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
 
 {% endblock %}

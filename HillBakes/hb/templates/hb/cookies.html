@@ -20,7 +20,7 @@ Cookies
                     <p> Description: {{chip.description}}</p>
                     <ul>
                         {% for p in price %}
-                        <li>{{p}} - ${{p.price}}  <a href="{% url 'cart:cart_add' chip.id p.id %}"><button class="btn btn-sm btn-outline-dark">Add to Cart</button></a> </li>
+                        <li>{{p}} - ${{p.price}}  <a href="{% url 'cart:cart_add' chip.id p.id %}?next=hb:cookies"><button class="btn btn-sm btn-outline-dark">Add to Cart</button></a> </li>
                         {% endfor %}
                         <br>
                     </ul>
