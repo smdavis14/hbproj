@@ -10,15 +10,29 @@ Cakes
 <section class="container-lg shadow-lg bg-light">
     <div>
     {% for icing in cake %}
-        <div class="m-3 p-3 shadow-lg bg-success text-white justify-items-start">
-            <h3 class="p-2">{{icing}}</h3>
-                <p> Description: {{icing.description}}</p>
-                <ul>
-                    {% for p in price %}
-                        <li>{{p}} - ${{p.price}}</li>
-                    {% endfor %}
-                    <br>
-                </ul>
+
+
+ <div class="container-lg m-3 p-3 shadow-lg  m-2 p-2 bg-success text-white ">
+            <div class="row  align-items-center ">
+                <div class="col-lg-6 col-md-4">
+                    <h3 class="p-2">{{icing}}</h3>
+                    <p> Description: {{icing.description}}</p>
+                    <ul>
+                        {% for p in price %}
+                        <li>{{p}} - ${{p.price}}  <a href="{% url 'cart:cart_add' icing.id p.id %}?next=hb:cakes"><button class="btn btn-sm btn-outline-dark">Add to Cart</button></a> </li>
+                        {% endfor %}
+                        <br>
+                    </ul>
+                </div>
+                
+                <div class="px-5 col-md-4 col-lg-6 justify-content-lg-center">
+                    {% if icing.image %}
+                    
+                    <img src="{{icing.image.url}}" alt="cake" class="float-center" height="350" width="290">
+                    
+                    {% endif %}
+                </div>
+            </div>
         </div>
     {% endfor %}
     </div>

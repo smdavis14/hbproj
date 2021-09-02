@@ -21,9 +21,11 @@ class Cart(object):
         """
         id = product.id
         newItem = True
-        if str(product.id) not in self.cart.keys():
+        cart_key = f'{product.id}, {cost.id}'
+        print(cart_key)
+        if cart_key not in self.cart.keys():
 
-            self.cart[product.id] = {
+            self.cart[cart_key] = {
                 'userid': self.request.user.id,
                 'product_id': id,
                 'cost_id': cost.id, 
@@ -37,7 +39,7 @@ class Cart(object):
             newItem = True
 
             for key, value in self.cart.items():
-                if key == str(product.id):
+                if key == cart_key:
 
                     value['quantity'] = value['quantity'] + 1
                     newItem = False
@@ -45,7 +47,7 @@ class Cart(object):
                     break
             if newItem == True:
 
-                self.cart[product.id] = {
+                self.cart[cart_key] = {
                     'userid': self.request,
                     'product_id': product.id,
                     'cost_id': cost.id,
@@ -63,21 +65,24 @@ class Cart(object):
         # mark the session as "modified" to make sure it is saved
         self.session.modified = True
 
-    def remove(self, product):
+    def remove(self, product, cost):
         """
         Remove a product from the cart.
         """
-        product_id = str(product.id)
+        cart_key = f'{product.id}, {cost.id}'
+        product_id = cart_key
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
 
-    def decrement(self, product):
+    def decrement(self, product, cost):
+        cart_key = f'{product.id}, {cost.id}'
         for key, value in self.cart.items():
-            if key == str(product.id):
+            if key == cart_key:
 
                 value['quantity'] = value['quantity'] - 1
                 if(value['quantity'] < 1):
+                    self.remove(product, cost)
                     return redirect('cart:cart_detail')
                 self.save()
                 break

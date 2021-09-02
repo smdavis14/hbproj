@@ -1,4 +1,5 @@
 {% extends 'hb/base.html' %}
+{% load static %}
 
 {% block title %}
 Shopping Cart
@@ -6,54 +7,58 @@ Shopping Cart
 
 {% block content %}
 
-<section class="container-lg shadow-lg bg-light">        
-    <div class="m-3 p-3 shadow-lg bg-success text-white">
+<script defer src="{% static 'hb/cart.js' %}"></script>
 
-        <div class="cart_main">
-            <h1>Shopping Cart</h1>
-        </div>
-    </div>
-</section>
-
-<section class="container-lg shadow-lg bg-light">        
-    <div class="m-3 p-3 shadow-lg bg-success text-white">
-        <div class="row">
-
+<section>    
+    {% load cart_tag %}
+    <section class="container-lg shadow-lg bg-light">        
+        <div class="m-3 p-3 shadow-lg bg-success text-white">
             <div>
-                {% load cart_tag %}
-
-                <a class="text-dark" href="{% url 'cart:cart_clear' %}">Clear Cart</a>
-
-
-                <div class="cart">
-                    <H1>Your cart</H1>
-                
+                <div class="row align-items-center">
+                                    
+                    <div class="col-lg-4">
+                        <H2>Your Shopping Cart</H2>  
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <h4>Total Items: {{request.session.cart|length}}</h4>
+                    </div> 
+                    
+                    <div class="col-lg-4">
+                        <h3>Cart Total: $<span id="cartSum"></span></h3>
+                    </div>
                 </div>
 
-
-
-                <h4>Total Items: {{request.session.cart|length}}</h4>
-
-                <h4>Cart Detail:</h4>
-
-                {% for key,product in request.session.cart.items %}
-                <ul class="list-group">{{product.name}}
-                     <li class="list-group-item">Item and Cost/Item: {{product.verbose_name}} @ ${{product.price}} </li>
-                     <li class="list-group-item">Quantity: {{product.quantity}}</li>
-                     <li class="list-group-item">Total ${{ product.price|multiply:product.quantity }}</li>
-                    <a class="text-dark" href="{% url 'cart:item_increment' product.product_id product.cost_id  %}">Add Item</a>
-                    <a class="text-dark" href="{% url 'cart:item_decrement' product.product_id product.cost_id %}">Remove Item</a>
-                </ul>
-                <br>
-
-                {% endfor %}
-                
+                <a class="text-dark" href="{% url 'cart:cart_clear' %}">Clear Cart</a>
             </div>
 
         </div>
+    </section>
 
-    </div>
+    <section class="container-lg shadow-lg bg-light">        
+        <div class="m-3 p-3 shadow-lg bg-success text-white">
+                
+            <div class="row">
+                    
+                <h4>Cart Detail:</h4>
+                <div id="cart-details">
+                    {% for key,product in request.session.cart.items %}
+                    <ul class="list-group">{{product.name}}
+                        <li class="list-group-item">Item and Cost/Item: {{product.verbose_name}} @ ${{product.price}} </li>
+                        <li class="list-group-item">Quantity: <span  class="total_items">{{product.quantity}}</span></li>
+                        <li class="list-group-item">Total: $<span class="total">{{ product.price|multiply:product.quantity }}</span></li>
+                        <a class="text-dark" href="{% url 'cart:item_increment' product.product_id product.cost_id  %}">Add Item</a>
+                        <a class="text-dark" href="{% url 'cart:item_decrement' product.product_id product.cost_id %}">Remove Item</a>
+                    </ul>
+                    <br>
+                    {% endfor %}
+                </div>
+                    
+            </div>
+                
+        </div>
+
+    </section>
 </section>
-
 
 {% endblock %}

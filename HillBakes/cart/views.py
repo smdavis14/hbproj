@@ -39,7 +39,7 @@ def item_decrement(request, productID, costID):
     cart = Cart(request)
     product = Product.objects.get(id=productID)
     cost = Cost.objects.get(id=costID)
-    cart.decrement(product=product)
+    cart.decrement(product=product, cost=cost)
     return redirect("cart:cart_detail")
 
 
