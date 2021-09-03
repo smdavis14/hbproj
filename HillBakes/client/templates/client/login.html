@@ -1,4 +1,5 @@
 {% extends 'hb/base.html' %}
+{% load static %}
 
 {% block title %}
 Login
@@ -7,7 +8,8 @@ Login
 {% block content %}
 
 
-<section class="container-lg shadow-lg pb-3 bg-success">
+<section class="container-lg shadow-lg bg-light">
+    <div class="m-3 p-3 shadow-lg bg-success text-white">
     <form class="row g-3"action="{% url 'client:login_user' %}" method="POST">
         {% csrf_token %}
         <div class="col-md-6">
@@ -23,6 +25,7 @@ Login
             <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">or Sign Up</button>
         </div>
     </form>
+    </div>
 </section>
 
 
@@ -59,5 +62,25 @@ Login
       </div>
     </div>
 
+<section class="container-lg shadow-lg  bg-light">        
+    <div class="m-3 p-3 shadow-lg bg-success text-white">
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-2 text-center">
+                <a href="{% url 'hb:cookies' %}"><button class="btn btn-outline-dark mb-2">Cookies</button></a>
+                <img src="{% static '/ChocolateChunkPecan.jpeg' %}" alt="cookie" class="float-center" height="400" width="325">
+            </div>
+            <div class="col-lg-4 col-md-2 text-center">
+                <a href="{% url 'hb:cakes' %}"><button class="btn btn-outline-dark mb-2">Cakes</button></a>
+                <img src="{% static '/InsideOutChocVanCake.jpeg' %}" alt="cake" class="float-center" height="400" width="325">
+                
+            </div>
+            <div class="col-lg-4 col-md-2 text-center">
+                <a href="{% url 'hb:cake_balls' %}"><button class="btn btn-outline-dark mb-2">Cake Balls</button></a>
+                <img src="{% static '/CookiesCreamCB.png' %}" alt="cake balls" class="float-center" height="400" width="325">
+                
+            </div>
+        </div>
+    </div>
+</section>    
 
 {% endblock %}
